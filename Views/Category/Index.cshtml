@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<ExpenseTracker.Models.Category>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Categories";
 }
-
-<h1>Index</h1>
 
 <p>
     <a asp-action="AddOrEdit">Create</a>
@@ -40,6 +38,11 @@
         <a class="btn btn-sm no-a-decorations" href="Category/AddOrEdit/${Id}">
             <i class="fa-solid fa-pencil"></i>
         </a>
-
+        <form method="post" action="Category/Delete/${Id}">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-link no-a-decorations" onclick="return confirm('Are you sure to delete this category?')">
+                <i class="fa fa-solid fa-trash-can fa-lg text-danger"></i>
+            </button>
+        </form>
     </div>
 </script>
