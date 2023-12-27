@@ -2,11 +2,9 @@
 
 @{
     ViewData["PageTitle"] = "Categories";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["PageActionUrl"] = "/Category/AddOrEdit";
 }
-
-<p>
-    <a asp-action="AddOrEdit">Create</a>
-</p>
 <div class="row">
     <div class="col-md-7">
         <ejs-grid id="categories" dataSource="Model" gridLines="None" allowSorting="true" allowPaging="true">

@@ -112,6 +112,9 @@ body {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+.e-grid .e-focused:not(.e-menu-item):not(.e-editedbatchcell) {
+    box-shadow: none;
+}
 /*radio button groups*/
 
 .e-btn-group.custom-rbt-group {
@@ -135,4 +138,10 @@ body {
 .widget{
     border-radius: 1rem;
     background-color:  #1a222b;
+}
+/* breadcrumb */
+
+.e-breadcrumb a, .e-breadcrumb a:hover{
+    text-decoration:none !important;
+    color: inherit !important;
 }

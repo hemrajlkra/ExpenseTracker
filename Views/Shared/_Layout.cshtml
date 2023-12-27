@@ -47,8 +47,20 @@
                                     <div class="flex-grow-1">
                                         <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
                                     </div>
-                                    
+                                    <div>
+                                        @if(ViewData["PageActionText"] != null)
+                                        {
+                                           <a class="btn btn-success text-white" href="@ViewData["PageActionTitle"]">
+                                                @ViewData["PageActionText"]
+                                           </a> 
+                                        }
+                                        
+                                    </div>
                                 </div>
+                                @*breadcrumb *@
+                                <ejs-breadcrumb id="breadcrumb" separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")">
+
+                                </ejs-breadcrumb>
                             </div>
                         </div>
                     </div>
