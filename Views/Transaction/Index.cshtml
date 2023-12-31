@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ExpenseTracker.Models.Transaction>
+
+@{
+    ViewData["PageTitle"] = "Transactions";
+    ViewData["PageActionText"] = "+ New Transaction";
+    ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid id="transactions" dataSource="Model" gridLines="None" allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Category" field="CategoryTitleWithIcon" width="170px"></e-grid-column>
+                <e-grid-column headerText="Date" field="Date" format="MMM-dd-yy" type="date" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Amount" field="FormattedAmount" width="140px" textAlign="Right"></e-grid-column>
+
+                <e-grid-column headerText="Actions" template="#ActionColumnTemplate" ></e-grid-column>
+            </e-grid-columns>
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36;">
+            <i class="fa-solid fa-shapes fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+<script id="ActionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm no-a-decorations" href="Transaction/AddOrEdit/${Id}">
+            <i class="fa-solid fa-pencil"></i>
+        </a>
+        <form method="post" action="Transaction/Delete/${Id}">
+    @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-link no-a-decorations" onclick="return confirm('Are you sure to delete this category?')">
+                <i class="fa fa-solid fa-trash-can fa-lg text-danger"></i>
+            </button>
+        </form>
+    </div>
+</script>
