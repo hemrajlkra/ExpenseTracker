@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["isDashboard"] = true;
+}
+@*summary wigets*@
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary income">
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+            </div>
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Total Income</span>
+                <h1 class="display-6 fw-bold">@ViewBag.totalIncome</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary expense">
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+            </div>
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Total Expense</span>
+                <h1 class="display-6 fw-bold">@ViewBag.totalExpense</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary balance">
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+            </div>
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Total Balance</span>
+                <h1 class="display-6 fw-bold">@ViewBag.totalBalance</h1>
+            </div>
+        </div>
+    </div>
+</div>
+@*Doughnut and spline chart*@
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="widget chart">
+            <div class="p-4">
+                <h5 class="fw-bold"> Expense by Category</h5>
+            </div>
+            <ejs-accumulationchart id="doughnutchart" background="#1a222b" enableSmartLabels>
+                <e-accumulation-series-collection>
+                    <e-accumulation-series datasource="@ViewBag.DoughnutChartData" xname="categoryTitleWithIcon" yname="amount" innerradius="50%" legendshape="Circle">
+                        <e-accumulationseries-datalabel name="formattedAmount" visible="true" ></e-accumulationseries-datalabel>
+                    </e-accumulation-series>
+                </e-accumulation-series-collection>
+                <e-accumulationchart-legendsettings position="Top" togglevisibility="false">
+                    <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-accumulationchart-legendsettings>
+                <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+            </ejs-accumulationchart>
+        </div>
+    </div>
+    
+</div>
