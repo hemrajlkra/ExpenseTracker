@@ -46,7 +46,8 @@
             </div>
             <ejs-accumulationchart id="doughnutchart" background="#1a222b" enableSmartLabels>
                 <e-accumulation-series-collection>
-                    <e-accumulation-series datasource="@ViewBag.DoughnutChartData" xname="categoryTitleWithIcon" yname="amount" innerradius="50%" legendshape="Circle">
+                    <e-accumulation-series datasource="@ViewBag.DoughnutChartData" xname="categoryTitleWithIcon" yname="amount" innerradius="50%" legendshape="Circle"
+                                           palettes=@(new string[]{"#54ffa9","#ffe91a","#0000ff","#ee82ee","#6a5acd","#ffa500","#3cb371","#ff0000","#ffb947","#36b99d"})>
                         <e-accumulationseries-datalabel name="formattedAmount" visible="true" ></e-accumulationseries-datalabel>
                     </e-accumulation-series>
                 </e-accumulation-series-collection>
@@ -57,5 +58,37 @@
             </ejs-accumulationchart>
         </div>
     </div>
-    
+    <div class="col-md-8">
+        <div class="widget chart">
+            <div class="p-4">
+                <h5 class="fw-bold"> Income Vs Expense </h5>
+            </div>
+            <ejs-chart id="spline-chart" background="#1a222b" palettes=@(new string[]{"#54ffa9","#ffe91a"})>
+                <e-chart-primaryxaxis valuetype="Category">
+                    <e-majorgridlines width="0"></e-majorgridlines>
+                    <e-majorticklines width="0"></e-majorticklines>
+                </e-chart-primaryxaxis>
+                <e-chart-primaryyaxis>
+                    <e-majorgridlines width="1" color="#32414d" dasharray="3,5"></e-majorgridlines>
+                    <e-majorticklines width="0"></e-majorticklines>
+                    <e-linestyle width="0"></e-linestyle>
+                </e-chart-primaryyaxis>
+                <e-chart-chartarea>
+                    <e-chartarea-border width="0"></e-chartarea-border>
+                </e-chart-chartarea>
+                <e-series-collection>
+                    <e-series datasource="@ViewBag.SplineChartData" xname="day" yname="income" name="Income"
+                    type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+                    <e-series datasource="@ViewBag.SplineChartData" xname="day" yname="expense" name="Expense"
+                              type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+                </e-series-collection>
+                <e-chart-legendsettings position="Top" alignment=Far togglevisibility="false">
+                    <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-chart-legendsettings>
+                <e-chart-tooltipsettings enable shared></e-chart-tooltipsettings>
+
+            </ejs-chart>
+            
+        </div>
+    </div>
 </div>
