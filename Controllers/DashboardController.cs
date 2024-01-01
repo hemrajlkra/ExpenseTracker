@@ -82,6 +82,9 @@ namespace ExpenseTracker.Controllers
                                           income = income == null ? 0 : income.Income,
                                           expense = expense == null ? 0 : expense.Expense,
                                       };
+            //recent transactions
+            ViewBag.RecentTransactions = await _context.Transactions.Include(i => i.Category)
+                .OrderByDescending(j => j.Date).Take(5).ToListAsync();
             return View();
         }
         public class SplineChartData
